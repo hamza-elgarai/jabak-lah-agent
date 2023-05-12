@@ -1,0 +1,26 @@
+
+.login-form{
+    /* box-shadow: -1px 1px 13px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 1px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 13px 0px rgba(0,0,0,0.75); */
+    min-width: 40vw;
+}
+.login-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+@media screen and (max-width: 559px) {
+    .login-form{
+        align-items: center;
+        padding: 1rem 1rem !important;
+        width: 90vw;
+    }
+    .login-title{
+        font-size: 2rem;
+    }
+    input[type=email] , input[type=password]{
+        font-size: 1.1rem !important;
+    }
+    
+}

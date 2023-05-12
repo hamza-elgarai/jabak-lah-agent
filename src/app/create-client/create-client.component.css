@@ -1,0 +1,23 @@
+.create-client-container{
+    max-width: 85vw;
+    margin: auto !important;
+    align-self: center;
+}
+.personal-info-container{
+    width:90%;
+}
+select{
+    padding: 0.6rem 1rem;
+}
+option:hover{
+    padding: 2rem;
+}
+.type-button{
+    border-radius: 0;
+}
+.dropdown-item{
+    --bs-dropdown-link-active-bg: var(--dark-blue);
+}
+.dropdown{
+    width:15rem;
+}

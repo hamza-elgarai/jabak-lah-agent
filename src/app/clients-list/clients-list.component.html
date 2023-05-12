@@ -1,0 +1,35 @@
+
+<div class="clients-list-container mt-5 mx-3 d-flex flex-column gap-4 py-4 align-items-center justfiy-content-center">
+    <h2>Liste des clients</h2>
+    <div class="table-container bg-light-grey p-2 shadow rounded-2 mt-4">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Type de compte</th>
+                    <th>E-mail</th>
+                    <th>Téléphone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="client-row" *ngFor="let client of clients;let i=index">
+                    <td class="pt-3 fw-bold">{{i+1}}</td>
+                    <td class="pt-3">{{client.fname}} {{client.lname}}</td>
+                    <td class="pt-3">{{client.accountType}}</td>
+                    <td class="pt-3">{{client.email}}</td>
+                    <td class="pt-3">{{client.telephone}}</td>
+                    <td><button class="btn btn-danger text-center rounded-circle">
+                        <fa-icon [icon]="faTrashAlt"></fa-icon>
+                    </button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="table-footer d-flex w-100 px-5 justify-content-center">
+        <a href="#create-client" class="btn action-btn fw-bold px-4">Ajouter</a>
+    </div>
+
+</div>

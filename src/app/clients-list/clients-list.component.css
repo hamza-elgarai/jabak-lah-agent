@@ -1,0 +1,12 @@
+
+.table-container{
+    width: 95%;
+    overflow-x: auto;
+    height: 70vh;
+}
+table{
+    min-width: 35rem;
+}
+tr.client-row{
+    cursor:pointer;
+}
