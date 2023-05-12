@@ -1,52 +1,54 @@
+<div class="d-flex flex-column justify-content-center">
 
-<div class="create-client-container shadow rounded-2 mx-sm-5 mx-1 py-2 bg-light-grey">
-    <h2 class="client-form-title text-center mt-4 ">Ouverture d'un compte de paiement</h2>
-    <form action="" method="post" class="create-client-form d-flex flex-column mt-3 justify-content-center px-5 py-3">
-        <div class="form-inputs d-flex flex-column  gap-4">
-            <h4 class="form-input-title fw-normal ">Choisir le type de compte : </h4>
-            <div ngbDropdown class="align-self-center">
-                <button type="button" class="btn action-btn dropdown px-3 m-auto" id="dropdownBasic1" ngbDropdownToggle>
-                    {{selectedType.id===0 ?'Choisir un type':'Type '+selectedType.id+' : Plafond '+selectedType.plafond+'DH' }}
-                </button>
-                <div ngbDropdownMenu class="dropdown" aria-labelledby="dropdownBasic1">
-                    <button type="button" (click)="setType({id:1,plafond:200})" ngbDropdownItem>Type 1 : Plafond 200DH</button>
-                    <button type="button" (click)="setType({id:2,plafond:2000})" ngbDropdownItem>Type 2 : Plafond 2 000DH</button>
-                    <button type="button" (click)="setType({id:3,plafond:50000})" ngbDropdownItem>Type 3 : Plafond 50 000DH</button>
+    <h2 class="client-form-title text-center mt-5 ">Ouverture d'un compte de paiement</h2>
+    <div class="create-client-container shadow rounded-2 mx-sm-5 mx-1 mt-5 py-2 bg-light-grey">
+        <form action="" method="post" class="create-client-form d-flex flex-column mt-3 justify-content-center px-5 py-3">
+            <div class="form-inputs d-flex flex-column  gap-4">
+                <h4 class="form-input-title fw-normal ">Choisir le type de compte : </h4>
+                <div ngbDropdown class="align-self-center">
+                    <button type="button" class="btn action-btn dropdown px-3 m-auto" id="dropdownBasic1" ngbDropdownToggle>
+                        {{selectedType.id===0 ?'Choisir un type':'Type '+selectedType.id+' : Plafond '+selectedType.plafond+'DH' }}
+                    </button>
+                    <div ngbDropdownMenu class="dropdown" aria-labelledby="dropdownBasic1">
+                        <button type="button" (click)="setType({id:1,plafond:200})" ngbDropdownItem>Type 1 : Plafond 200DH</button>
+                        <button type="button" (click)="setType({id:2,plafond:2000})" ngbDropdownItem>Type 2 : Plafond 2 000DH</button>
+                        <button type="button" (click)="setType({id:3,plafond:50000})" ngbDropdownItem>Type 3 : Plafond 50 000DH</button>
+                    </div>
                 </div>
+                <!--<select class="form-select rounded-0 fs-5 fw-light" aria-label="Select Type" required>
+                    <option selected>Choisir Type :</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                    <option value="3">Type 3</option>
+                </select>-->
+                <hr>
+                <h4 class="fw-normal">Informations personnelles : </h4>
+                <div class="personal-info container">
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="form-floating mb-3 col ">
+                            <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="lname" id="lname" placeholder="Nom">
+                            <label for="lname" class="fw-light ms-3">Nom :</label>
+                        </div>
+                        <div class="form-floating mb-3 col ">
+                            <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="fname" id="fname" placeholder="Prénom">
+                            <label for="fname" class="fw-light ms-3">Prénom :</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="form-floating mb-3 col ">
+                            <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="email" id="email" placeholder="E-mail">
+                            <label for="email" class="fw-light ms-3">E-mail :</label>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                            <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="tel" id="tel" placeholder="Téléphone">
+                            <label for="tel" class="fw-light ms-3">Téléphone :</label>
+                        </div>
+                    </div>
+                      
+                </div>
+                
             </div>
-            <!--<select class="form-select rounded-0 fs-5 fw-light" aria-label="Select Type" required>
-                <option selected>Choisir Type :</option>
-                <option value="1">Type 1</option>
-                <option value="2">Type 2</option>
-                <option value="3">Type 3</option>
-            </select>-->
-            <hr>
-            <h4 class="fw-normal">Informations personnelles : </h4>
-            <div class="personal-info container">
-                <div class="row row-cols-1 row-cols-md-2">
-                    <div class="form-floating mb-3 col ">
-                        <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="lname" id="lname" placeholder="Nom">
-                        <label for="lname" class="fw-light ms-3">Nom :</label>
-                    </div>
-                    <div class="form-floating mb-3 col ">
-                        <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="fname" id="fname" placeholder="Prénom">
-                        <label for="fname" class="fw-light ms-3">Prénom :</label>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-md-2">
-                    <div class="form-floating mb-3 col ">
-                        <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="email" id="email" placeholder="E-mail">
-                        <label for="email" class="fw-light ms-3">E-mail :</label>
-                    </div>
-                    <div class="form-floating mb-3 col">
-                        <input type="text" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="tel" id="tel" placeholder="Téléphone">
-                        <label for="tel" class="fw-light ms-3">Téléphone :</label>
-                    </div>
-                </div>
-                  
-            </div>
-            
-        </div>
-        <button type="submit" class="btn action-btn rounded-2 align-self-center mt-4 px-5 fs-5">Valider</button>
-    </form>
+            <button type="submit" class="btn action-btn rounded-2 align-self-center mt-4 px-5 fs-5">Valider</button>
+        </form>
+    </div>
 </div>

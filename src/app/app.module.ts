@@ -9,6 +9,7 @@ import { ClientsListComponent } from './clients-list/clients-list.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StatusPipe } from './pipe/StatusPipe';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { StatusPipe } from './pipe/StatusPipe';
     NgbModule,
     DataTablesModule,
     FontAwesomeModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
