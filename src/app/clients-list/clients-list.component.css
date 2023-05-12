@@ -9,4 +9,8 @@ table{
 }
 tr.client-row{
     cursor:pointer;
+    vertical-align: middle;
+}
+.status{
+    width:5.6rem;
 }

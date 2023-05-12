@@ -3,6 +3,7 @@ export interface Client{
     fname: string,
     lname:string,
     accountType:number,
+    status:string,
     email:string,
     telephone:string
 }
