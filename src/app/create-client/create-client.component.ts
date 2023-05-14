@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-client',
@@ -10,5 +12,7 @@ export class CreateClientComponent {
   setType(type:{id:number,plafond:number}){
     this.selectedType=type; 
   }
+
+  constructor(public navigate:Location){}
 
 }
