@@ -13,7 +13,7 @@ import {NgForm} from '@angular/forms';
 export class LoginPageComponent implements OnInit {
   constructor(public router:Router,private authService:AuthService){}
   form:LoginBody = {
-    email: "",
+    username: "",
     password:""
   }
 

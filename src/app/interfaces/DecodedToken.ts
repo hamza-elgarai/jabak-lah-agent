@@ -1,7 +1,7 @@
 export interface DecodedToken
 {
     roles: string[],
-    "sub": string,
+    sub: string,
     iat: number,
     exp: number
 }

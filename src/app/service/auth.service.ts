@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   login(form:LoginBody){
-    this.http.post<LoginResponse>("http://localhost:8090/auth/authenticate",form).subscribe(
+    this.http.post<LoginResponse>("http://localhost:8090/agent/auth/authenticate",form).subscribe(
       (data) =>{
         console.log(data)
         sessionStorage.setItem("token",data.token)
