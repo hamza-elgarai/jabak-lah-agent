@@ -1,7 +1,7 @@
 <div class="clients-list-container mt-4 mx-3 d-flex flex-column gap-4 py-4 align-items-center justfiy-content-center">
     <div class="d-flex gap-5 align-items-center">
         <h2 >Liste des clients</h2>
-        <a routerLink="" class="btn btn-outline-danger">Deconnecte</a>
+        <a routerLink="" class="btn btn-outline-danger" (click)="logout()">Deconnecte</a>
     </div>
     <div class="table-container bg-light-grey p-2 shadow rounded-2 mt-4">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
