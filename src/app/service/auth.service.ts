@@ -29,7 +29,7 @@ export class AuthService {
         console.log(data)
         localStorage.setItem("token",data.token)
         localStorage.setItem("refreshToken",data.refreshToken)
-        this.router.navigateByUrl('/clients')
+        // this.router.navigateByUrl('/clients')
         console.log(this.jwtService.decodeToken(data.token));
       } ,
         
@@ -66,7 +66,11 @@ export class AuthService {
   }
 
   changePassword(body:LoginBody){
-    this.http.post("http://localhost:8090/agent/auth/change-password",body).subscribe(
+    this.http.post("http://localhost:8090/agent/auth/change-password",body,{
+      headers:{
+        Authorization:`Bearer ${this.getToken()}`
+      }
+    }).subscribe(
       (data)=>{
         console.log(data);
         this.router.navigateByUrl("/clients")
@@ -77,7 +81,11 @@ export class AuthService {
   getIsPasswordChanged():Observable<boolean>{
     if(!this.isAuthenticated()) this.router.navigateByUrl('/')
     let username = this.getUsername()
-    return this.http.post<boolean>("http://localhost:8090/agent/auth/is-password-changed",{username:username})
+    return this.http.post<boolean>("http://localhost:8090/agent/auth/is-password-changed",{username:username},{
+      headers:{
+        Authorization:`Bearer ${this.getToken()}`
+      }
+    })
   }
 
   logout(){
