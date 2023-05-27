@@ -6,11 +6,14 @@ import { ClientsListComponent } from './clients-list/clients-list.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AuthService } from './service/auth.service';
+import { PasswordChangeGuard } from './guard/password-change.guard';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
-  { path: 'clients', component: ClientsListComponent,canActivate:[AuthGuard]},
-  { path: 'create-client', component: CreateClientComponent,canActivate:[AuthGuard]}
+  { path: 'clients', component: ClientsListComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path: 'create-client', component: CreateClientComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path: 'change-password', component: ChangePasswordComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({

@@ -5,6 +5,9 @@ import { LoginResponse } from '../interfaces/LoginResponse';
 import { JwtService } from './jwt/JwtService';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import jwtDecode from 'jwt-decode';
+import { DecodedToken } from '../interfaces/DecodedToken';
+import { error } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +51,33 @@ export class AuthService {
     localStorage.setItem('token',token)
   }
   getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('token')||''
   }
   getRefreshToken(){
     return localStorage.getItem('refreshToken')
   }
   setRefreshToken(refreshToken:string){
     localStorage.setItem('token',refreshToken)
+  }
+  getUsername(){
+  
+    let decodedToken:DecodedToken = jwtDecode(this.getToken())
+    return decodedToken.sub
+  }
+
+  changePassword(body:LoginBody){
+    this.http.post("http://localhost:8090/agent/auth/change-password",body).subscribe(
+      (data)=>{
+        console.log(data);
+        this.router.navigateByUrl("/clients")
+      } 
+        
+    )
+  }
+  getIsPasswordChanged():Observable<boolean>{
+    if(!this.isAuthenticated()) this.router.navigateByUrl('/')
+    let username = this.getUsername()
+    return this.http.post<boolean>("http://localhost:8090/agent/auth/is-password-changed",{username:username})
   }
 
   logout(){

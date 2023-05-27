@@ -23,7 +23,6 @@ export class ClientsListComponent implements OnInit ,OnDestroy{
     this.dtTrigger.next(null)
 
 
-
     //Temporary code for getting all clients , to be placed in a service
     let token = localStorage.getItem('token') || ''
     this.http.get("http://localhost:8090/clients",{

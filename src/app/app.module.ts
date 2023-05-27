@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     LoginPageComponent,
     CreateClientComponent,
     ClientsListComponent,
-    StatusPipe
+    StatusPipe,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
