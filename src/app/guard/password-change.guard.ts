@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthService } from '../service/auth.service';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,22 @@ export class PasswordChangeGuard implements CanActivate {
   }
   canActivate(): Observable<boolean> {
     return this.auth.getIsPasswordChanged().pipe(
-      map((result:boolean) => {
-        if (!result) {
-          this.router.navigate(['/change-password']);
+      catchError((error)=> {
+        console.log("caught error");
+        return of(false)
+      }),
+      map((result:any) => {
+        if(typeof result !== 'boolean'){
+          this.auth.logout()
+          this.router.navigateByUrl("/")
+          return false;
         }
-        return result;
+        else{
+          if (!result) {
+            this.router.navigate(['/change-password']);
+          }
+          return result;
+        }
       })
     );
     //  || this.router.navigateByUrl('/change-password')
