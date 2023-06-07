@@ -33,6 +33,7 @@ export class PasswordChangeGuard implements CanActivate {
         else{
           if (!result) {
             this.router.navigate(['/change-password']);
+            return false;
           }
           return result;
         }
