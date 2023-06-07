@@ -63,7 +63,7 @@ export class EditClientComponent {
     
   }
   submitVerser(){
-    if(this.versement===0 || this.versement===null) return;
+    if(this.versement<=0 || this.versement===null) return;
     this.agentService.addSolde(this.client.id,this.versement).subscribe(
       (data:any)=>{
         this.toastr.success(data.message,"Succès!!")
