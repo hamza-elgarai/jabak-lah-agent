@@ -12,15 +12,18 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditClientComponent {
   constructor(public navigate:Location, private route: ActivatedRoute,private agentService:AgentService,private toastr: ToastrService){}
-  client:any;
+  client:any={};
+  
   versement=0;
   editBody= {} as {fname:string,lname:string,email:string,tel:string}
 
   ngOnInit(){
+    this.client.compteBancaire={}
+    this.client.type={}
     this.route.params.subscribe(params => {
       const id = Number(params['id']);
       this.agentService.getClient(id).subscribe(
-        (client)=>{ 
+        (client:any)=>{ 
           this.client = client
           const {fname,lname,email,tel} = this.client
           this.editBody= {fname,lname,email,tel}
@@ -35,6 +38,12 @@ export class EditClientComponent {
       this.toastr.error("Des champs sont manquants","Erreur!!")
       return
     }
+    const phoneRegex = /^0\d{9}$/
+    if(!phoneRegex.test(this.editBody.tel)){
+      this.toastr.error("Format de numéro de téléphone : 0XXXXXXXXX")
+      return;
+    }
+
     this.agentService.editClient(this.client.id,this.editBody).subscribe(
       (data:any)=> {
 
@@ -46,6 +55,7 @@ export class EditClientComponent {
         this.toastr.error(error.error.message,"Erreur!!")
       }
     )
+
     
   }
   submitVerser(){
