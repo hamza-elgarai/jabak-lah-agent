@@ -39,11 +39,15 @@ export class EditClientComponent {
       return
     }
     const phoneRegex = /^0\d{9}$/
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
     if(!phoneRegex.test(this.editBody.tel)){
       this.toastr.error("Format de numéro de téléphone : 0XXXXXXXXX")
       return;
     }
-
+    if(!emailRegex.test(this.editBody.email)){
+      this.toastr.error("E-mail est erroné")
+      return
+    }
     this.agentService.editClient(this.client.id,this.editBody).subscribe(
       (data:any)=> {
 
