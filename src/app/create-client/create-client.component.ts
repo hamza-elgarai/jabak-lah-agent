@@ -22,7 +22,7 @@ export class CreateClientComponent {
     email:"",
     tel:"",
     password:"defaultpassword",
-    solde:0,
+    solde:200,
     idType:0
 }
 
