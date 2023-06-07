@@ -4,5 +4,6 @@ export interface RegisterBody{
     email:string,
     tel:string,
     password:string,
+    solde:number,
     idType:number
 }

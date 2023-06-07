@@ -24,21 +24,7 @@ export class AuthService {
   
 
   login(form:LoginBody){
-    this.http.post<LoginResponse>("http://localhost:8090/agent/auth/authenticate",form).subscribe(
-      (data) =>{
-        console.log(data)
-        localStorage.setItem("token",data.token)
-        localStorage.setItem("refreshToken",data.refreshToken)
-        // this.router.navigateByUrl('/clients')
-        console.log(this.jwtService.decodeToken(data.token));
-      } ,
-        
-      (err:HttpErrorResponse) =>{
-        console.log("login error");
-        console.log(err);
-  
-      }
-    )
+    return this.http.post<LoginResponse>("http://localhost:8090/agent/auth/authenticate",form)
   }
 
   refreshLogin():Observable<HttpEvent<any>>{
@@ -66,17 +52,11 @@ export class AuthService {
   }
 
   changePassword(body:LoginBody){
-    this.http.post("http://localhost:8090/agent/auth/change-password",body,{
+    return this.http.post("http://localhost:8090/agent/auth/change-password",body,{
       headers:{
         Authorization:`Bearer ${this.getToken()}`
       }
-    }).subscribe(
-      (data)=>{
-        console.log(data);
-        this.router.navigateByUrl("/clients")
-      } 
-        
-    )
+    })
   }
   getIsPasswordChanged():Observable<boolean>{
     if(!this.isAuthenticated()) this.router.navigateByUrl('/')

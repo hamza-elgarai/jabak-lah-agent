@@ -1,0 +1,7 @@
+.versement{
+    width:30vh;
+    min-width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

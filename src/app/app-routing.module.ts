@@ -8,10 +8,12 @@ import { AuthGuard } from './guard/auth.guard';
 import { AuthService } from './service/auth.service';
 import { PasswordChangeGuard } from './guard/password-change.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { EditClientComponent } from './edit-client/edit-client.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'clients', component: ClientsListComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path: 'client/:id', component: EditClientComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path: 'create-client', component: CreateClientComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path: 'change-password', component: ChangePasswordComponent,canActivate:[AuthGuard]},
 ];

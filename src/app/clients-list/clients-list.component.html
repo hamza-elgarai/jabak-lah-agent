@@ -1,7 +1,7 @@
 <div class="clients-list-container mt-4 mx-3 d-flex flex-column gap-4 py-4 align-items-center justfiy-content-center">
-    <div class="d-flex gap-5 align-items-center">
+    <div class="d-flex gap-5 align-items-center justify-content-center">
         <h2 >Liste des clients</h2>
-        <a routerLink="" class="btn btn-outline-danger" (click)="logout()">Deconnecte</a>
+        <a routerLink="" class="btn btn-outline-danger" (click)="logout()">Déconnexion</a>
     </div>
     <div class="table-container bg-light-grey p-2 shadow rounded-2 mt-4">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
@@ -17,23 +17,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="client-row" *ngFor="let client of clients;let i=index">
+                <tr class="client-row" *ngFor="let client of clients;let i=index" (click)="editClient(client)">
                     <td class=" fw-bold">{{i+1}}</td>
                     <td>{{client.fname}} {{client.lname}}</td>
-                    <td>{{client.accountType}}</td>
+                    <td>{{client.type.id}}</td>
                     <td>{{client.email}}</td>
                     <td>
                         <div [ngClass]="{
-                            'text-danger':client.status==='not-verified',
-                            'text-success':client.status==='verified',
+                            'text-danger':client.verificationStatus==='not-verified',
+                            'text-success':client.verificationStatus==='verified',
                             }"
                             class=" status fw-bold"
                         >
-                            {{client.status | status}}
+                            {{client.verificationStatus | status}}
                         </div>
                     </td>
-                    <td class="pt-3">{{client.telephone}}</td>
-                    <td><button class="btn btn-danger text-center rounded-circle">
+                    <td class="pt-3">{{client.tel}}</td>
+                    <td><button class="btn btn-danger text-center rounded-circle" (click)="deleteClient(client.id,$event)">
                         <fa-icon [icon]="faTrashAlt"></fa-icon>
                     </button></td>
                 </tr>

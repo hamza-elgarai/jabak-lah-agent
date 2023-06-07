@@ -11,13 +11,6 @@ export class ClientRegisterService {
   constructor(private http:HttpClient,private router:Router) { }
 
   registerClient(registerBody:RegisterBody){
-    this.http.post('http://localhost:8090/client/auth/register',registerBody).subscribe(
-      (data)=> {
-        console.log(data)
-        if(data!=null)
-        this.router.navigateByUrl('/clients')
-      },
-      (err)=> console.log(err)
-    )
+    return this.http.post('http://localhost:8090/client/auth/register',registerBody)
   }
 }

@@ -2,7 +2,7 @@
 .table-container{
     width: 95%;
     overflow-x: auto;
-    height: 70vh;
+    height: 60vh;
 }
 table{
     min-width: 35rem;

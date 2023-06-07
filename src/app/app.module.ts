@@ -14,6 +14,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { EditClientComponent } from './edit-client/edit-client.component';
+import { ToastNoAnimationModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     CreateClientComponent,
     ClientsListComponent,
     StatusPipe,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    EditClientComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     DataTablesModule,
     FontAwesomeModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastNoAnimationModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
