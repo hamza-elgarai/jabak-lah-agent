@@ -7,7 +7,7 @@
                 <h4 class="form-input-title fw-bold text-center">Solde : {{client.compteBancaire.solde | currency:'':'':'1.2-2'}} DH | Plafond : {{client.type.plafond | currency:'':'':'1.2-2'}} DH</h4>
                 <h4 class="form-input-title fw-normal ">Versement: </h4>
                 <div class="form-floating mb-3 col align-self-center versement">
-                    <input type="number" name="versement" [(ngModel)]="versement" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="versement" id="versement" placeholder="Versement en DH">
+                    <input type="number" min="0" name="versement" [(ngModel)]="versement" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="versement" id="versement" placeholder="Versement en DH">
                     <label for="Versement" class="fw-light ms-3">Versement en DH :</label>
                     <button class="btn action-btn rounded-2 align-self-center mt-4 px-5 fs-5" type="submit" (click)="submitVerser()">Verser</button>
                 </div>

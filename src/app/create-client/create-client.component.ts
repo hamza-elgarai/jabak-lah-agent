@@ -30,6 +30,7 @@ export class CreateClientComponent {
   setType(type:{id:number,plafond:number}){
     this.selectedType=type; 
     this.registerBody.idType=type.id;
+    this.registerBody.solde=type.plafond
   }
   submitRegister(){
     let valid=true;
@@ -39,15 +40,18 @@ export class CreateClientComponent {
         return;
       }
     })
-    const phoneRegex = /^0\d{9}$/
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-    if(!phoneRegex.test(this.registerBody.tel)){
-      this.toastr.error("Format de numéro de téléphone n'est pas valide")
-      return
-    }
-    if(!emailRegex.test(this.registerBody.email)){
-      this.toastr.error("E-mail est erroné")
-      return
+    if(valid){
+      const phoneRegex = /^0\d{9}$/
+      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+      if(!phoneRegex.test(this.registerBody.tel)){
+        this.toastr.error("Format de numéro de téléphone n'est pas valide")
+        return
+      }
+      if(!emailRegex.test(this.registerBody.email)){
+        this.toastr.error("E-mail est erroné")
+        return
+      }
+
     }
 
     console.log(valid);
