@@ -69,6 +69,12 @@ export class EditClientComponent {
       this.toastr.warning("Veuillez rentrer une valeur positive")
       return 
     }
+
+    if(this.versement+this.client.compteBancaire.solde > this.client.type.plafond){
+      this.toastr.warning("Echec, dépassement du plafond")
+      return
+    }
+
     if(this.versement===0 || this.versement===null) return;
     this.agentService.addSolde(this.client.id,this.versement).subscribe(
       (data:any)=>{

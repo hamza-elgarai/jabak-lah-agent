@@ -15,6 +15,11 @@ export class CreateClientComponent {
 
 
   selectedType= {id:0,plafond:0} as {id:number, plafond:number};
+  types= [
+    {id:1,plafond:200},
+    {id:2,plafond:2000},
+    {id:3,plafond:50000}
+  ]
 
   registerBody:RegisterBody = {
     fname:"",
@@ -22,15 +27,14 @@ export class CreateClientComponent {
     email:"",
     tel:"",
     password:"defaultpassword",
-    solde:0,
+    solde:200,
     idType:0
 }
 
 
-  setType(type:{id:number,plafond:number}){
-    this.selectedType=type; 
-    this.registerBody.idType=type.id;
-    this.registerBody.solde=type.plafond
+  setType(id:number){
+    this.selectedType=this.types.find((type)=> type.id===id)||{id:0,plafond:0}; 
+    this.registerBody.idType=this.selectedType.id;
   }
   submitRegister(){
     let valid=true;
@@ -52,6 +56,11 @@ export class CreateClientComponent {
         return
       }
 
+    }
+
+    if(this.registerBody.solde>this.selectedType.plafond){
+      this.toastr.warning("Le solde dépasse le plafond")
+      return
     }
 
     console.log(valid);

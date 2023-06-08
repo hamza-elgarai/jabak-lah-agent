@@ -10,9 +10,9 @@
                         {{selectedType.id===0 ?'Choisir un type':'Type '+selectedType.id+' : Plafond '+selectedType.plafond+'DH' }}
                     </button>
                     <div ngbDropdownMenu class="dropdown" aria-labelledby="dropdownBasic1">
-                        <button type="button" (click)="setType({id:1,plafond:200})" ngbDropdownItem>Type 1 : Plafond 200DH</button>
-                        <button type="button" (click)="setType({id:2,plafond:2000})" ngbDropdownItem>Type 2 : Plafond 2 000DH</button>
-                        <button type="button" (click)="setType({id:3,plafond:50000})" ngbDropdownItem>Type 3 : Plafond 50 000DH</button>
+                        <button type="button" (click)="setType(1)" ngbDropdownItem>Type 1 : Plafond 200DH</button>
+                        <button type="button" (click)="setType(2)" ngbDropdownItem>Type 2 : Plafond 2 000DH</button>
+                        <button type="button" (click)="setType(3)" ngbDropdownItem>Type 3 : Plafond 50 000DH</button>
                     </div>
                 </div>
                 <!--<select class="form-select rounded-0 fs-5 fw-light" aria-label="Select Type" required>
