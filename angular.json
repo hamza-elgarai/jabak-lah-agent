@@ -30,8 +30,6 @@
               "node_modules/ngx-toastr/toastr.css" 
             ],
             "scripts": [
-        
-              "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"
             ]
           },
           "configurations": {
@@ -39,8 +37,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "3mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
