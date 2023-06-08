@@ -55,13 +55,17 @@ export class CreateClientComponent {
         this.toastr.error("E-mail est erroné")
         return
       }
+      if(this.registerBody.solde>this.selectedType.plafond){
+        this.toastr.warning("Le solde dépasse le plafond")
+        return
+      }
+      if(this.registerBody.solde<200){
+        this.toastr.warning("Le solde minimum est 200 DH")
+        return
+      }
 
     }
 
-    if(this.registerBody.solde>this.selectedType.plafond){
-      this.toastr.warning("Le solde dépasse le plafond")
-      return
-    }
 
     console.log(valid);
     if(valid){
