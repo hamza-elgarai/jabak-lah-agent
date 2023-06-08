@@ -4,7 +4,7 @@
     <div class="create-client-container shadow rounded-2 mx-sm-5 mx-1 mt-5 py-2 bg-light-grey">
         <form action="" method="post" #f="ngForm" class="create-client-form d-flex flex-column mt-3 justify-content-center px-5 py-3">
             <div class="form-inputs d-flex flex-column  gap-4">
-                <h4 class="form-input-title fw-bold text-center">Solde : {{client.compteBancaire.solde | currency:'':'':'1.2-2'}} DH | Plafond : {{client.type.plafond | currency:'':'':'1.2-2'}}</h4>
+                <h4 class="form-input-title fw-bold text-center">Solde : {{client.compteBancaire.solde | currency:'':'':'1.2-2'}} DH | Plafond : {{client.type.plafond | currency:'':'':'1.2-2'}} DH</h4>
                 <h4 class="form-input-title fw-normal ">Versement: </h4>
                 <div class="form-floating mb-3 col align-self-center versement">
                     <input type="number" name="versement" [(ngModel)]="versement" class="form-control form-control-lg fw-light ps-3 rounded-2 shadow border"  name="versement" id="versement" placeholder="Versement en DH">
