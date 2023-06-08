@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginPageComponent implements OnInit {
   constructor(public router:Router,private authService:AuthService,private toastr:ToastrService){}
+
+
   form:LoginBody = {
     username: "",
     password:""
@@ -40,6 +42,9 @@ export class LoginPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()){
+      this.router.navigateByUrl('clients')
+    }
   }
 
 }
