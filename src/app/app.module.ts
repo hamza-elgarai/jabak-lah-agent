@@ -16,6 +16,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { ToastNoAnimationModule } from 'ngx-toastr';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     ClientsListComponent,
     StatusPipe,
     ChangePasswordComponent,
-    EditClientComponent
+    EditClientComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
