@@ -16,9 +16,9 @@ export class CreateClientComponent {
 
   selectedType= {id:0,plafond:0} as {id:number, plafond:number};
   types= [
-    {id:1,plafond:200},
-    {id:2,plafond:2000},
-    {id:3,plafond:50000}
+    {id:1,plafond:2000},
+    {id:2,plafond:10000},
+    {id:3,plafond:100000}
   ]
 
   registerBody:RegisterBody = {
