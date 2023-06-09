@@ -7,14 +7,14 @@ import { Injectable } from '@angular/core';
 export class AgentService {
 
   constructor(private http:HttpClient) { }
-  url="http://localhost:8090"
+  url="https://jabak-lah-backend.onrender.com"
 
   deleteClient(id:number){
     return this.http.delete(this.url+"/client/"+id)
   }
   getClients(){
     let token = localStorage.getItem('token') || ''
-    return this.http.get<any[]>("http://localhost:8090/clients",{
+    return this.http.get<any[]>(`${this.url}/clients`,{
       headers:{
         Authorization:"Bearer "+token
       }
@@ -22,7 +22,7 @@ export class AgentService {
   }
   editClient(id:number,editBody:any){
     let token = localStorage.getItem('token') || ''
-    return this.http.patch<HttpResponse<any>>("http://localhost:8090/client/"+id,editBody,{
+    return this.http.patch<HttpResponse<any>>(`${this.url}/client/`+id,editBody,{
       headers:{
         Authorization:"Bearer "+token
       },
@@ -30,7 +30,7 @@ export class AgentService {
   }
   getClient(id:number){
     let token = localStorage.getItem('token') || ''
-    return this.http.get<any[]>("http://localhost:8090/client/"+id,{
+    return this.http.get<any[]>(this.url+"/client/"+id,{
       headers:{
         Authorization:"Bearer "+token
       }
@@ -38,7 +38,7 @@ export class AgentService {
   }
   addSolde(id:number,versement:number){
     let token = localStorage.getItem('token') || ''
-    return this.http.patch<HttpResponse<any>>("http://localhost:8090/client/addSolde/"+id,{versement:versement},{
+    return this.http.patch<HttpResponse<any>>(this.url+"/client/addSolde/"+id,{versement:versement},{
       headers:{
         Authorization:"Bearer "+token
       },

@@ -11,8 +11,9 @@ export class ClientRegisterService {
 
   constructor(private http:HttpClient,private auth:AuthService,private router:Router) { }
 
+  url="https://jabak-lah-backend.onrender.com"
   registerClient(registerBody:RegisterBody){
-    return this.http.post('http://localhost:8090/client/auth/register',registerBody,{
+    return this.http.post(this.url+'/client/auth/register',registerBody,{
       headers:{
         "Authorization": "Bearer "+this.auth.getToken()
       }
