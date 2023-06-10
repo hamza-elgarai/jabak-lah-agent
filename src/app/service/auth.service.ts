@@ -14,6 +14,7 @@ import { error } from 'jquery';
 })
 export class AuthService {
 
+  url="https://jabak-lah-backend.onrender.com"
   constructor(private http:HttpClient,private jwtService:JwtService,private router:Router) { }
   isLoggedIn=false;
   isAuthenticated(){
@@ -24,12 +25,12 @@ export class AuthService {
   
 
   login(form:LoginBody){
-    return this.http.post<LoginResponse>("http://localhost:8090/agent/auth/authenticate",form)
+    return this.http.post<LoginResponse>(this.url+"/agent/auth/authenticate",form)
   }
 
   refreshLogin():Observable<HttpEvent<any>>{
     let refreshToken = localStorage.getItem('refreshToken')|| '';
-    return this.http.post<HttpEvent<any>>("http://localhost:8090/agent/auth/refresh",{token:refreshToken})
+    return this.http.post<HttpEvent<any>>(this.url+"/agent/auth/refresh",{token:refreshToken})
     
   }
 
@@ -52,7 +53,7 @@ export class AuthService {
   }
 
   changePassword(body:LoginBody){
-    return this.http.post("http://localhost:8090/agent/auth/change-password",body,{
+    return this.http.post(this.url+"/agent/auth/change-password",body,{
       headers:{
         Authorization:`Bearer ${this.getToken()}`
       }
@@ -61,7 +62,7 @@ export class AuthService {
   getIsPasswordChanged():Observable<boolean>{
     if(!this.isAuthenticated()) this.router.navigateByUrl('/')
     let username = this.getUsername()
-    return this.http.post<boolean>("http://localhost:8090/agent/auth/is-password-changed",{username:username},{
+    return this.http.post<boolean>(this.url+"/agent/auth/is-password-changed",{username:username},{
       headers:{
         Authorization:`Bearer ${this.getToken()}`
       }

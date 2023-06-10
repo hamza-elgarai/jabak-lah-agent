@@ -9,6 +9,7 @@ import { AuthService } from './service/auth.service';
 import { PasswordChangeGuard } from './guard/password-change.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'client/:id', component: EditClientComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path: 'create-client', component: CreateClientComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path: 'change-password', component: ChangePasswordComponent,canActivate:[AuthGuard]},
+  { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
 ];
 
 @NgModule({

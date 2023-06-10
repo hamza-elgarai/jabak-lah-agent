@@ -38,6 +38,8 @@ export class EditClientComponent {
       this.toastr.error("Des champs sont manquants","Erreur!!")
       return
     }
+
+
     const phoneRegex = /^0\d{9}$/
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
     if(!phoneRegex.test(this.editBody.tel)){
@@ -63,7 +65,17 @@ export class EditClientComponent {
     
   }
   submitVerser(){
-    if(this.versement<=0 || this.versement===null) return;
+    if(this.versement<0){
+      this.toastr.warning("Veuillez rentrer une valeur positive")
+      return 
+    }
+
+    if(this.versement+this.client.compteBancaire.solde > this.client.type.plafond){
+      this.toastr.warning("Echec, dépassement du plafond")
+      return
+    }
+
+    if(this.versement===0 || this.versement===null) return;
     this.agentService.addSolde(this.client.id,this.versement).subscribe(
       (data:any)=>{
         this.toastr.success(data.message,"Succès!!")

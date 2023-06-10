@@ -3,8 +3,8 @@
     <form action="" class=" shadow rounded-2 d-flex flex-column gap-3 px-5 py-5 login-form bg-light-grey" method="post" #f="ngForm">
         <h2 class="login-title pb-3">Se connecter</h2>
         <div class="form-floating w-100">
-            <input type="email" autocomplete="off" class="form-control form-control-lg fw-light rounded-2 shadow border"  name="email" id="email" placeholder="E-mail" [(ngModel)]="form.username" #username="ngModel">
-            <label for="email" class="fw-light ">E-mail :</label>
+            <input type="email" autocomplete="off" class="form-control form-control-lg fw-light rounded-2 shadow border"  name="email" id="email" placeholder="Nom d'utilisateur" [(ngModel)]="form.username" #username="ngModel">
+            <label for="email" class="fw-light ">Nom d'utilisateur</label>
         </div>
         <div class="form-floating w-100">
             <input type="password" class="form-control form-control-lg fw-light rounded-2 shadow border"  name="password" id="password" placeholder="Mot de passe" [(ngModel)]="form.password" #password="ngModel">
